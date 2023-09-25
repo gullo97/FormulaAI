@@ -1,9 +1,9 @@
 
-# Vectorized Fourier Agent Optimization
+# Optimizing Agent Performance on a virtual track using unitary transformations.
 
 ## Description
 
-This repository contains Python code for agent optimization using a vectorized Fourier approach. Agents navigate on a "track" characterized by a set of features generated using Fourier components. The optimization involves rotating agents' features to improve their speed based on the dot product with the track features.
+This repository contains Python code for agent optimization. Agents navigate on a "track" characterized by a set of features generated using Fourier components. The performance of each agent in a specific portion of the track is given by the similarity between the agent's features and the track features of that location. The optimization involves rotating agents' features to improve their speed based on the dot product with the track features.
 
 ## Requirements
 
@@ -25,6 +25,9 @@ The track on which the agents navigate is generated using a truncated Fourier se
 
 Where \( A_n \) and \( B_n \) are random coefficients, and \( N \) is the highest frequency.
 
+These features represent arbitrary track features, such as the curvature of the track, the presence of straight lines, surface grip etc. 
+The only constraint is that the track features are periodic, so that the track is a closed loop.
+
 ### Speed Calculation
 
 The speed of each agent on the track is determined by:
@@ -36,7 +39,7 @@ The speed of each agent on the track is determined by:
 Where \( \alpha \) and \( \beta \) are constants, and \( \langle \cdot, \cdot \rangle \) denotes the dot product.
 
 ### Feature Rotation
-
+The agent's features are represented by a vector in the plane. Different agents have different features, and the features of a single agent are constant during a lap/race. After each lap, the agent's features can be rotated to optimize performance.
 An agent's features are rotated to optimize performance using:
 
 \[
