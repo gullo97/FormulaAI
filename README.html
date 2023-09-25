@@ -1,0 +1,50 @@
+<h1>Vectorized Fourier Agent Optimization</h1>
+<h2>Description</h2>
+<p>This repository contains Python code for agent optimization using a vectorized Fourier approach. Agents navigate on a &quot;track&quot; characterized by a set of features generated using Fourier components. The optimization involves rotating agents’ features to improve their speed based on the dot product with the track features.</p>
+<h2>Requirements</h2>
+<ul>
+<li>Python 3.x</li>
+<li>NumPy</li>
+<li>Matplotlib</li>
+<li>tqdm</li>
+<li>IPython (optional for live plotting)</li>
+</ul>
+<h2>Mathematical Foundation</h2>
+<h3>Fourier Track Generation</h3>
+<p>The track is generated using a truncated Fourier series. The equation for this is:</p>
+<pre><code>Track(x) = SUM(n=1 to N) [ A_n * cos(2 * pi * n * x) + B_n * sin(2 * pi * n * x) ]
+</code></pre>
+<p>Where <code>A_n</code> and <code>B_n</code> are random coefficients, and <code>N</code> is the highest frequency involved.</p>
+<h3>Speed Calculation</h3>
+<p>The speed <code>v</code> of an agent on the track is determined using the formula:</p>
+<pre><code>speed = alpha + beta * dot_product(agent, track_features) / (norm(agent) * norm(track_features))
+</code></pre>
+<p>Here, <code>alpha</code> and <code>beta</code> are constants. <code>dot_product</code> is the dot product between the agent and track features, while <code>norm</code> refers to the L2 norm.</p>
+<h3>Feature Rotation</h3>
+<p>The feature set of an agent is rotated to optimize its speed using the formula:</p>
+<pre><code>Agent_new = rotation_matrix(theta, u, v) * Agent_old
+</code></pre>
+<p>Here, <code>rotation_matrix</code> is the matrix that rotates an agent’s features in the plane defined by vectors <code>u</code> and <code>v</code>. <code>theta</code> is the rotation angle.</p>
+<h2>Usage</h2>
+<p>To run the main simulation with your preferred settings, execute the following:</p>
+<pre><code class="language-python">lap_times_history, budget_history, trained_agents, track = main(num_agents=10, num_laps=2000, initial_budget=200.0, live_plotting=False, dt=0.1)
+</code></pre>
+<h2>Functions</h2>
+<ul>
+<li><code>generate_fourier_vectorized</code>: Generates the track based on Fourier series.</li>
+<li><code>speed_vectorized</code>: Computes the speed of agents based on the dot product with track features.</li>
+<li><code>rotate_features</code>: Rotates an agent’s feature vector.</li>
+<li><code>optimize_agent</code>: Optimizes an agent’s features based on its lap time.</li>
+<li><code>main</code>: Main function that ties everything together.</li>
+</ul>
+<h2>Plots</h2>
+<p>When executed, the program will generate four plots:</p>
+<ol>
+<li>The features of the track.</li>
+<li>The positions of agents.</li>
+<li>The progression of lap times.</li>
+<li>The progression of remaining budget for each agent.</li>
+</ol>
+<h2>Author</h2>
+<p>Guglielmo Ferranti, PhD student in Complex Systems.</p>
+<pre><code></code></pre>
