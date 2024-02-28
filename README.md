@@ -7,7 +7,7 @@ This repository contains Python code for agent optimization. Agents navigate on 
 
 ## Requirements
 
-- Python 3.x
+- Python 3.8
 - NumPy
 - Matplotlib
 - tqdm
